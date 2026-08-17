@@ -7,5 +7,4 @@ import java.util.List;
 public interface ServiceRepository extends JpaRepository<Service, Long> {
 
     List<Service> findByVendor_VendorId(Long vendorId);
-
 }

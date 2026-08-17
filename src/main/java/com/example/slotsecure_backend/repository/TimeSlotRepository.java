@@ -7,5 +7,4 @@ import java.util.List;
 public interface TimeSlotRepository extends JpaRepository<TimeSlot, Long> {
 
     List<TimeSlot> findByService_ServiceIdAndIsBookedFalse(Long serviceId);
-
 }

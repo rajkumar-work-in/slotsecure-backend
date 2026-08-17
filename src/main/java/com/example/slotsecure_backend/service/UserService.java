@@ -1,6 +1,7 @@
 package com.example.slotsecure_backend.service;
 
 import com.example.slotsecure_backend.entity.User;
+import com.example.slotsecure_backend.exception.DuplicateEmailException;
 import com.example.slotsecure_backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class UserService {
         User existingUser = userRepository.findByEmail(user.getEmail());
 
         if(existingUser != null) {
-            throw new RuntimeException("Email already registered!");
+            throw new DuplicateEmailException("Email already registered!");
         }
 
         return userRepository.save(user);
