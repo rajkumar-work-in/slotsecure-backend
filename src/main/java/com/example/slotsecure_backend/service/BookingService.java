@@ -32,11 +32,11 @@ public class BookingService {
         TimeSlot timeSlot = timeSlotRepository.findById(timeSlotId)
                 .orElseThrow(() -> new RuntimeException("TimeSlot not found!"));
 
-        if(timeSlot.getIsBooked()) {
+        if(timeSlot.isBooked()) {
             throw new SlotAlreadyBookedException("This slot is already booked!");
         }
 
-        timeSlot.setIsBooked(true);
+        timeSlot.setBooked(true);
 
         try{
             timeSlotRepository.save(timeSlot);
