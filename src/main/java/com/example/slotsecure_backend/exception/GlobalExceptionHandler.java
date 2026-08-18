@@ -15,7 +15,13 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleDuplicateEmail(DuplicateEmailException ex) {
         Map<String, String> error = new HashMap<>();
         error.put("error:", ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
 
+    @ExceptionHandler(SlotAlreadyBookedException.class)
+    public ResponseEntity<Map<String, String>> handleSlotAlreadyBooked(SlotAlreadyBookedException ex) {
+        Map<String, String> error = new HashMap<>();
+        error.put("error:", ex.getMessage());
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
 }
