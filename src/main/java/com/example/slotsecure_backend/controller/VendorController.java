@@ -17,8 +17,8 @@ public class VendorController {
 
     @PostMapping
     public ResponseEntity<Vendor> createVendor(@RequestBody Vendor vendor) {
-        Vendor saveVendor = vendorService.createVendor(vendor);
-        return ResponseEntity.ok(saveVendor);
+        Vendor savedVendor = vendorService.createVendor(vendor);
+        return ResponseEntity.ok(savedVendor);
     }
 
     @GetMapping
