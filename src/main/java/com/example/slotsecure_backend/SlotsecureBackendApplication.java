@@ -16,7 +16,7 @@ public class SlotsecureBackendApplication {
 	public CommandLineRunner testConcurancy(BookingService bookingService) {
 		return args -> {
 
-			Long timeSlotId = 2l;
+			Long timeSlotId = 2L;
 
 			Runnable aravindTask = () -> {
 				try {
