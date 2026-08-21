@@ -27,7 +27,7 @@ public class BookingService {
     public Booking createBooking(Long userId, Long timeSlotId) {
 
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException(""));
+                .orElseThrow(() -> new RuntimeException("User not found!"));
 
         TimeSlot timeSlot = timeSlotRepository.findById(timeSlotId)
                 .orElseThrow(() -> new RuntimeException("TimeSlot not found!"));
