@@ -16,7 +16,7 @@ public class UserService {
         User existingUser = userRepository.findByEmail(user.getEmail());
 
         if(existingUser != null) {
-            throw new DuplicateEmailException("");
+            throw new DuplicateEmailException("Email already registered!");
         }
 
         return userRepository.save(user);
