@@ -4,6 +4,7 @@ import com.example.slotsecure_backend.entity.Vendor;
 import com.example.slotsecure_backend.service.VendorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,8 +17,9 @@ public class VendorController {
     private VendorService vendorService;
 
     @PostMapping
-    public ResponseEntity<Vendor> createVendor(@RequestBody Vendor vendor) {
-        Vendor savedVendor = vendorService.createVendor(vendor);
+    public ResponseEntity<Vendor> createVendor(@RequestBody Vendor vendor, Authentication authentication) {
+        String email = authentication.getName();
+        Vendor savedVendor = vendorService.createVendor(vendor, email);
         return ResponseEntity.ok(savedVendor);
     }
 
